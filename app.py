@@ -5,7 +5,10 @@ from img_handler import ImageHandler
 
 
 def main():
-   
+   for dirname, _, filenames in os.walk(''):
+    for filename in filenames:
+        st.write(os.path.join(dirname, filename))
+       
     st.title('Tennis Play Predictor')
     st.image('resources/Tennis.jpg')  
     st.header('Welcome to the Tennis Play Predictor!')  
