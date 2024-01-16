@@ -102,13 +102,10 @@ def visualize_tree(container):
         tree_fig = Pipeline.visualize_tree()
         container.pyplot(tree_fig)
         
-@st.cache_data
+# @st.cache_data
 def getImage(prediction):
-    image_handler = ImageHandler()
-    if prediction == 'yes':
-        st.image(image_handler.get_image('yes'))
-    else:
-        st.image(image_handler.get_image('no'))
+    image_handler = ImageHandler() 
+    st.image(image_handler.get_image(prediction), caption=prediction, use_column_width=True)
 
 def prediction_result(pipelines, temperature, humidity, windy, outlook):
     # Create a DataFrame for the current input data
@@ -130,7 +127,7 @@ def prediction_result(pipelines, temperature, humidity, windy, outlook):
         st.balloons()
     
     else:
-        st.toast('Do not play Tennis!', icon='')
+        st.toast('Do not play Tennis!')
         st.info('Do not play Tennis!')
         getImage(prediction)
     

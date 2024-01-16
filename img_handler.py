@@ -2,7 +2,7 @@ from PIL import Image
 
 class ImageHandler:
     _instance = None
-    _target_height = 200  # Adjust this as needed
+    _target_height = 500  # Adjust this as needed
 
     def __new__(cls):
         if not cls._instance:
@@ -16,8 +16,8 @@ class ImageHandler:
 
     def load_and_resize_image(self, image_path):
         image = Image.open(image_path)
-        new_width = int(image.width * self._target_height / image.height)
-        image = image.resize((new_width, self._target_height))
+        # new_width = int(image.width * self._target_height / image.height)
+        # image = image.resize((new_width, self._target_height))
         return image
 
     @staticmethod
