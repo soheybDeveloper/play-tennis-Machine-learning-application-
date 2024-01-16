@@ -33,6 +33,7 @@ class Pipeline:
         try:
             current_folder = os.path.dirname(os.path.abspath(__file__))
             model_path = os.path.join(current_folder, 'pipeline.pkl')
+            print(model_path)
             pip = joblib.load(model_path)
             return pip
         except FileNotFoundError as e:
