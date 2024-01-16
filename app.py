@@ -5,7 +5,7 @@ from img_handler import ImageHandler
 import os
 
 def main():
-   for dirname, _, filenames in os.walk(''):
+   for dirname, _, filenames in os.walk():
     for filename in filenames:
         st.write(os.path.join(dirname, filename))
        
