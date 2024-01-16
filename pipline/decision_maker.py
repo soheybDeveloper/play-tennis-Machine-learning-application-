@@ -1,4 +1,5 @@
 import joblib
+import os
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.pipeline import Pipeline
@@ -17,12 +18,16 @@ class Pipeline:
     @classmethod
     def get_proccessor(cls):
         if cls._proccessor is None:
-            cls._proccessor= joblib.load('preprocessor.pkl')
+            current_folder = os.path.dirname(os.path.abspath(__file__))
+            proccessor_path = os.path.join(current_folder, 'preprocessor.pkl')
+            cls._proccessor = joblib.load(proccessor_path)
         return cls._proccessor
+
     @classmethod
     def load_model(cls):
-        # Load the model
-        pip = joblib.load('pipeline.pkl')
+        current_folder = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.join(current_folder, 'pipeline.pkl')
+        pip = joblib.load(model_path)
         return pip
 
     @classmethod
