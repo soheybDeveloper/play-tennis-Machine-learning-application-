@@ -5,18 +5,34 @@ from img_handler import ImageHandler
 import os
 import subprocess
 
-def install_scikit_learn(version):
+def install_package(package, version):
     try:
-        subprocess.run(['pip', 'install', f'scikit-learn=={version}'], check=True)
-        print(f'Successfully installed scikit-learn version {version}')
+        subprocess.run(['pip', 'install', f'{package}=={version}'], check=True)
+        print(f'Successfully installed {package} version {version}')
     except subprocess.CalledProcessError:
-        print(f'Error installing scikit-learn version {version}')
+        print(f'Error installing {package} version {version}')
 
-# Specify the version you want to install
-desired_version = '0.24.2'
+def check_and_install_dependencies():
+    # Desired versions
+    scikit_learn_version = '1.2.2'
+    joblib_version = '1.2.0'
 
-# Install the specified version
-install_scikit_learn(desired_version)
+    # Check current versions
+    current_scikit_learn_version = sklearn.__version__
+    current_joblib_version = joblib.__version__
+
+    print(f'Current scikit-learn version: {current_scikit_learn_version}')
+    print(f'Current joblib version: {current_joblib_version}')
+
+    # Check if versions match, and install if necessary
+    if current_scikit_learn_version != scikit_learn_version:
+        install_package('scikit-learn', scikit_learn_version)
+
+    if current_joblib_version != joblib_version:
+        install_package('joblib', joblib_version)
+
+# Check and install dependencies
+check_and_install_dependencies()
 
 
 def main():
