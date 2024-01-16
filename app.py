@@ -4,6 +4,9 @@ from pipline.decision_maker import Pipeline
 from img_handler import ImageHandler
 import os
 import subprocess
+import subprocess
+import sklearn
+import joblib
 
 def install_package(package, version):
     try:
@@ -18,8 +21,13 @@ def check_and_install_dependencies():
     joblib_version = '1.2.0'
 
     # Check current versions
-    current_scikit_learn_version = sklearn.__version__
-    current_joblib_version = joblib.__version__
+    try:
+        current_scikit_learn_version = sklearn.__version__
+        current_joblib_version = joblib.__version__
+    except NameError:
+        # Handle the case where the modules are not imported
+        current_scikit_learn_version = 'Module not imported'
+        current_joblib_version = 'Module not imported'
 
     print(f'Current scikit-learn version: {current_scikit_learn_version}')
     print(f'Current joblib version: {current_joblib_version}')
@@ -33,6 +41,7 @@ def check_and_install_dependencies():
 
 # Check and install dependencies
 check_and_install_dependencies()
+
 
 
 def main():
