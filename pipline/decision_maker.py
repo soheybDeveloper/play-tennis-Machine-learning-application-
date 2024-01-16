@@ -27,7 +27,7 @@ class Pipeline:
 
     @classmethod
     def load_model(cls):
-        try:
+        
             current_folder = os.path.dirname(os.path.abspath(__file__))
             model_path = os.path.join(current_folder, 'pipline/pipeline.pkl')
             pip = joblib.load(model_path)
