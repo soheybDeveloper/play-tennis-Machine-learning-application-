@@ -140,7 +140,7 @@ import base64
 
 
 
-@st.cache_data
+# @st.cache_data
 def load_csv_data():
     
     df = pd.read_csv('resources/PlayTennis.csv')
