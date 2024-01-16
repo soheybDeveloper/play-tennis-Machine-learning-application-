@@ -24,6 +24,8 @@ class Pipeline:
             print(f"Current files in the directory: {os.listdir(current_folder)}")
             proccessor_path = os.path.join(current_folder, 'preprocessor.pkl')
             print(f"proccessor_path: {proccessor_path}")
+            raise FileLoadError(f"proccessor_path :{proccessor_path} ..... Current files: {os.listdir(current_folder)}")
+
             cls._proccessor = joblib.load(proccessor_path)
         return cls._proccessor
 
@@ -48,7 +50,7 @@ class Pipeline:
 
     @classmethod
     def visualize_tree(cls):
-        # classifier = cls.get_pipeline().named_steps['classifier']
+        classifier = cls.get_pipeline().named_steps['classifier']
         fig, ax = plt.subplots(figsize=(23, 19))
         # plot_tree(classifier,
         #           feature_names=cls.get_proccessor().get_feature_names_out(['outlook', 'temp', 'humidity', 'windy']),
