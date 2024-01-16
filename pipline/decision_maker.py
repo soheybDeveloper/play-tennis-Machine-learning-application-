@@ -15,20 +15,31 @@ class Pipeline:
         if cls._pipeline is None:
             cls._pipeline= cls.load_model()
         return cls._pipeline
-    @classmethod
+
+        @classmethod
     def get_proccessor(cls):
-        if cls._proccessor is None:
-            current_folder = os.path.dirname(os.path.abspath(__file__))
-            proccessor_path = os.path.join(current_folder, 'preprocessor.pkl')
-            cls._proccessor = joblib.load(proccessor_path)
-        return cls._proccessor
+        try:
+            if cls._proccessor is None:
+                current_folder = os.path.dirname(os.path.abspath(__file__))
+                proccessor_path = os.path.join(current_folder, 'preprocessor.pkl')
+                cls._proccessor = joblib.load(proccessor_path)
+            return cls._proccessor
+        except FileNotFoundError as e:
+            print(f"FileNotFoundError: {e}")
+            print(f"Current files in the directory: {os.listdir(current_folder)}")
+            raise
 
     @classmethod
     def load_model(cls):
-        current_folder = os.path.dirname(os.path.abspath(__file__))
-        model_path = os.path.join(current_folder, 'pipeline.pkl')
-        pip = joblib.load(model_path)
-        return pip
+        try:
+            current_folder = os.path.dirname(os.path.abspath(__file__))
+            model_path = os.path.join(current_folder, 'pipeline.pkl')
+            pip = joblib.load(model_path)
+            return pip
+        except FileNotFoundError as e:
+            print(f"FileNotFoundError: {e}")
+            print(f"Current files in the directory: {os.listdir(current_folder)}")
+            raise
 
     @classmethod
     def predict(cls, input_data):
