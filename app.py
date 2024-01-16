@@ -3,7 +3,7 @@ import pandas as pd
 from pipline.decision_maker import Pipeline
 from img_handler import ImageHandler
 import os
-pip install upgrade scikit-learn
+
 
 def main():
 
