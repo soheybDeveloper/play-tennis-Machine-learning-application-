@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from pipline.decision_maker import Pipeline
 from img_handler import ImageHandler
-
+import os
 
 def main():
    for dirname, _, filenames in os.walk(''):
