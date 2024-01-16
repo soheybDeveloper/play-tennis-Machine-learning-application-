@@ -3,6 +3,20 @@ import pandas as pd
 from pipline.decision_maker import Pipeline
 from img_handler import ImageHandler
 import os
+import subprocess
+
+def install_scikit_learn(version):
+    try:
+        subprocess.run(['pip', 'install', f'scikit-learn=={version}'], check=True)
+        print(f'Successfully installed scikit-learn version {version}')
+    except subprocess.CalledProcessError:
+        print(f'Error installing scikit-learn version {version}')
+
+# Specify the version you want to install
+desired_version = '0.24.2'
+
+# Install the specified version
+install_scikit_learn(desired_version)
 
 
 def main():
