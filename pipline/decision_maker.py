@@ -16,7 +16,7 @@ class Pipeline:
             cls._pipeline= cls.load_model()
         return cls._pipeline
 
-        @classmethod
+    @classmethod
     def get_proccessor(cls):
         try:
             if cls._proccessor is None:
