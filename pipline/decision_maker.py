@@ -21,7 +21,7 @@ class Pipeline:
         
             if cls._proccessor is None:
                 current_folder = os.path.dirname(os.path.abspath(__file__))
-                proccessor_path = os.path.join(current_folder, 'pipline/preprocessor.pkl')
+                proccessor_path = os.path.join(current_folder, './pipline/preprocessor.pkl')
                 cls._proccessor = joblib.load(proccessor_path)
             return cls._proccessor
 
@@ -29,7 +29,7 @@ class Pipeline:
     def load_model(cls):
         
             current_folder = os.path.dirname(os.path.abspath(__file__))
-            model_path = os.path.join(current_folder, 'pipline/pipeline.pkl')
+            model_path = os.path.join(current_folder, './pipline/pipeline.pkl')
             pip = joblib.load(model_path)
             return pip
 
