@@ -20,14 +20,14 @@ class Pipeline:
     @classmethod
     def get_proccessor(cls):
         if cls._proccessor is None:
-            proccessor_path = "/mount/src/play-tennis-machine-learning-application-/pipline/preprocessor.pkl"
+            proccessor_path = "pipline/preprocessor.pkl"
             cls._proccessor = joblib.load(proccessor_path)
         return cls._proccessor
 
     @classmethod
     def load_model(cls):
         # Load the model
-        model_path = '/mount/src/play-tennis-machine-learning-application-/pipline/pipeline.pkl'
+        model_path = 'pipline/pipeline.pkl'
         pip = joblib.load(model_path)
         return pip
 
