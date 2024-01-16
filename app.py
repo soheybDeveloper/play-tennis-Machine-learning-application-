@@ -125,10 +125,12 @@ def prediction_result(pipelines, temperature, humidity, windy, outlook):
     # Display result
     if prediction == 'yes':
         st.success('Play Tennis!')
+        st.toast('Play Tennis!!', icon='🎉')
         getImage(prediction)
         st.balloons()
     
     else:
+        st.toast('Do not play Tennis!', icon='')
         st.info('Do not play Tennis!')
         getImage(prediction)
     
