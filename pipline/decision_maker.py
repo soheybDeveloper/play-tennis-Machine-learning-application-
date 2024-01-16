@@ -26,7 +26,7 @@ class Pipeline:
             print(f"proccessor_path: {proccessor_path}")
             raise FileLoadError(f"proccessor_path :{proccessor_path} ..... Current files: {os.listdir(current_folder)}")
 
-            cls._proccessor = joblib.load(proccessor_path)
+            # cls._proccessor = joblib.load(proccessor_path)
         return cls._proccessor
 
            
