@@ -1,5 +1,5 @@
 import joblib
-import os
+
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.pipeline import Pipeline
@@ -10,37 +10,27 @@ from sklearn.tree import plot_tree
 class Pipeline:
     _pipeline = None  # Class property to store the pipeline
     _proccessor=None
+    
     @classmethod
     def get_pipeline(cls):
         if cls._pipeline is None:
             cls._pipeline= cls.load_model()
         return cls._pipeline
+
     @classmethod
     def get_proccessor(cls):
-        
         if cls._proccessor is None:
-            current_folder = os.path.dirname(os.path.abspath(__file__))
-            
-            print(f"Current files in the directory: {os.listdir(current_folder)}")
-            proccessor_path = os.path.join(current_folder, 'preprocessor.pkl')
-            print(f"proccessor_path: {proccessor_path}")
-            raise FileLoadError(f"proccessor_path :{proccessor_path} ..... Current files: {os.listdir(current_folder)}")
-
-            # cls._proccessor = joblib.load(proccessor_path)
+            proccessor_path = "preprocessor.pkl"
+            cls._proccessor = joblib.load(proccessor_path)
         return cls._proccessor
-
-           
-            
 
     @classmethod
     def load_model(cls):
+        # Load the model
+        model_path = 'pipeline.pkl'
+        pip = joblib.load(model_path)
+        return pip
 
-            current_folder = os.path.dirname(os.path.abspath(__file__))
-            model_path = os.path.join(current_folder, 'pipeline.pkl')
-    
-            pip = joblib.load(model_path)
-            return pip
-     
 
     
     @classmethod
@@ -52,16 +42,16 @@ class Pipeline:
     def visualize_tree(cls):
         classifier = cls.get_pipeline().named_steps['classifier']
         fig, ax = plt.subplots(figsize=(23, 19))
-        # plot_tree(classifier,
-        #           feature_names=cls.get_proccessor().get_feature_names_out(['outlook', 'temp', 'humidity', 'windy']),
-        #           class_names=['No', 'Yes'],
-        #           filled=True,
-        #           rounded=True,
-        #           impurity=False,
-        #           proportion=True,
-        #           precision=2,
-        #           ax=ax,
-        #           fontsize=16)
+        plot_tree(classifier,
+                  feature_names=cls.get_proccessor().get_feature_names_out(['outlook', 'temp', 'humidity', 'windy']),
+                  class_names=['No', 'Yes'],
+                  filled=True,
+                  rounded=True,
+                  impurity=False,
+                  proportion=True,
+                  precision=2,
+                  ax=ax,
+                  fontsize=16)
         ax.set_title("Decision Tree for Tennis Decision Making")
         return fig
       
