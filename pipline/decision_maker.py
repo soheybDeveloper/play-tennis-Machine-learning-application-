@@ -27,7 +27,7 @@ class Pipeline:
     @classmethod
     def load_model(cls):
         # Load the model
-        model_path = 'pipline/pipeline.pkl'
+        model_path = 'pipline/your_pipeline.pkl'
         pip = joblib.load(model_path)
         return pip
 
