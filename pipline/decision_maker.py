@@ -17,12 +17,12 @@ class Pipeline:
     @classmethod
     def get_proccessor(cls):
         if cls._proccessor is None:
-            cls._proccessor= joblib.load('pipline/preprocessor.pkl')
+            cls._proccessor= joblib.load('preprocessor.pkl')
         return cls._proccessor
     @classmethod
     def load_model(cls):
         # Load the model
-        pip = joblib.load('pipline/pipeline.pkl')
+        pip = joblib.load('pipeline.pkl')
         return pip
 
     @classmethod
