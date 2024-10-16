@@ -1,12 +1,11 @@
+
 import streamlit as st
 import pandas as pd
 from pipline.decision_maker import Pipeline
 from img_handler import ImageHandler
 import os
 import subprocess
-import subprocess
-import sklearn
-import joblib
+
 
 def install_package(package, version):
     try:
@@ -15,6 +14,8 @@ def install_package(package, version):
     except subprocess.CalledProcessError:
         print(f'Error installing {package} version {version}')
 
+import sklearn
+import joblib
 def check_and_install_dependencies():
     # Desired versions
     scikit_learn_version = '1.2.2'

@@ -1,0 +1,34 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Git files
+.git/
+.gitignore
+
+# Ignore Docker-related files that don’t need to be in the image
+docker-compose.yml
+Dockerfile
+
+# Ignore local environment files
+.env
+.env.*
+
+# Ignore node_modules if using Node.js anywhere in the project
+node_modules/
+
+# Ignore other build artifacts
+*.log
+*.tmp
+
+# Ignore directories that might contain local config or artifacts
+docker/
+nginx/

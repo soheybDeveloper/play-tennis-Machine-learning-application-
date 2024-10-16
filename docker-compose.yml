@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest  # Use the official NGINX image from Docker Hub
+    container_name: nginx_container
+    ports:
+      - "${NGINX_PORT:-80}:80"  # Expose NGINX port
+    # volumes:
+    #   - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf  # Mount your NGINX config
+    environment:
+      - NGINX_PORT=${NGINX_PORT:-80}
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: streamlit_nginx_app
+    ports:
+      - "${STREAMLIT_PORT:-8501}:8501"  # Expose Streamlit port
+    volumes:
+      - .:/app  # Mount your application code
+    environment:
+      - STREAMLIT_PORT=${STREAMLIT_PORT:-8501}
+    command: bash -c "streamlit run ./app.py"
